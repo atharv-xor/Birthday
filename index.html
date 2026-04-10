@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 19th Birthday, Jeetesh! 🎂</title>
+
+  <!-- Favicon: neon cake emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+
+  <!-- Google Fonts: Poppins only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       LAYER 1 · CSS Star Field (no JS, no images)
+  ═══════════════════════════════════════════ -->
+  <div class="star-layer star-sm"  aria-hidden="true"></div>
+  <div class="star-layer star-md"  aria-hidden="true"></div>
+  <div class="star-layer star-lg"  aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       LAYER 2 · Ambient Orb Glows (pure CSS)
+  ═══════════════════════════════════════════ -->
+  <div class="orb orb-cyan"  aria-hidden="true"></div>
+  <div class="orb orb-pink"  aria-hidden="true"></div>
+  <div class="orb orb-purple" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN APP SHELL
+  ═══════════════════════════════════════════ -->
+  <main class="app-shell" id="app">
+
+    <!-- ─── STATE 1: COUNTDOWN ─── -->
+    <section class="panel countdown-panel" id="countdown-panel" aria-label="Countdown to birthday">
+
+      <p class="status-label">⏳ &nbsp;Preparing the Vibe&hellip;</p>
+
+      <div class="countdown-grid" id="countdown-grid">
+        <div class="digit-block">
+          <span class="digit" id="cd-days">00</span>
+          <span class="digit-label">DAYS</span>
+        </div>
+        <div class="digit-sep" aria-hidden="true">:</div>
+        <div class="digit-block">
+          <span class="digit" id="cd-hours">00</span>
+          <span class="digit-label">HRS</span>
+        </div>
+        <div class="digit-sep" aria-hidden="true">:</div>
+        <div class="digit-block">
+          <span class="digit" id="cd-mins">00</span>
+          <span class="digit-label">MINS</span>
+        </div>
+        <div class="digit-sep" aria-hidden="true">:</div>
+        <div class="digit-block">
+          <span class="digit" id="cd-secs">00</span>
+          <span class="digit-label">SECS</span>
+        </div>
+      </div>
+
+      <p class="countdown-sub">Unlocks on April 11, 2026 &middot; 00:00 IST</p>
+
+    </section>
+
+    <!-- ─── STATE 2: BIRTHDAY REVEAL ─── -->
+    <section class="birthday-panel" id="birthday-panel" aria-label="Birthday message" hidden>
+
+      <!-- Main Neon Heading -->
+      <h1 class="neon-heading">
+        Happy&nbsp;19th<br />Birthday,<br />Jeetesh!
+      </h1>
+
+      <!-- Decorative divider -->
+      <div class="divider" aria-hidden="true">
+        <span class="divider-dot"></span>
+        <span class="divider-line"></span>
+        <span class="divider-dot"></span>
+      </div>
+
+      <!-- ════════════════════════════════
+           EDIT ZONE 1 · Personal Message
+           Replace the text inside <p> below.
+           You can have multiple <p> tags.
+      ════════════════════════════════ -->
+      <div class="message-card panel" id="message-card">
+        <p class="message-text">
+          <!-- EDIT: Your message to Jeetesh goes here -->
+          "We may not have photos together, nor do we meet every day,
+          but we share our memories. Happy Birthday, Friend!"
+        </p>
+
+        <!-- EDIT ZONE 2 · Optional second paragraph — add anything personal -->
+        <p class="message-extra">
+          <!-- Leave blank or add a second line here -->
+        </p>
+      </div>
+
+      <!-- Launch Button -->
+      <div class="btn-wrap">
+        <button class="launch-btn" id="launch-btn" aria-label="Launch birthday song">
+          <span class="btn-icon">🎵</span>
+          <span class="btn-label" id="btn-label">Launch Birthday Vibe</span>
+        </button>
+        <p class="btn-hint" id="btn-hint">tap to play the vibe 🎧</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       YOUTUBE HIDDEN PLAYER ANCHOR
+       The IFrame API will inject the iframe here.
+       It is physically off-screen — audio only.
+  ═══════════════════════════════════════════ -->
+  <div id="yt-player" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
