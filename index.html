@@ -4,128 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy 19th Birthday, Jeetesh! 🎂</title>
-
-  <!-- Favicon: neon cake emoji -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
-
-  <!-- Google Fonts: Poppins only -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-<div id="cake-container" style="font-size: 5rem; margin-bottom: 1rem; cursor: default; display: inline-block;">🎂</div>
 
-<div id="meme-container" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 100;">
-  <img src="https://media.tenor.com/S6-2_Zp_S6EAAAAC/oiiaoiia-cat.gif" width="160" alt="Oiia Cat">
-</div>
-  <!-- ═══════════════════════════════════════════
-       LAYER 1 · CSS Star Field (no JS, no images)
-  ═══════════════════════════════════════════ -->
-  <div class="star-layer star-sm"  aria-hidden="true"></div>
-  <div class="star-layer star-md"  aria-hidden="true"></div>
-  <div class="star-layer star-lg"  aria-hidden="true"></div>
+  <div class="star-layer star-sm"></div>
+  <div class="star-layer star-md"></div>
+  <div class="star-layer star-lg"></div>
 
-  <!-- ═══════════════════════════════════════════
-       LAYER 2 · Ambient Orb Glows (pure CSS)
-  ═══════════════════════════════════════════ -->
-  <div class="orb orb-cyan"  aria-hidden="true"></div>
-  <div class="orb orb-pink"  aria-hidden="true"></div>
-  <div class="orb orb-purple" aria-hidden="true"></div>
-
-  <!-- ═══════════════════════════════════════════
-       MAIN APP SHELL
-  ═══════════════════════════════════════════ -->
-  <main class="app-shell" id="app">
-
-    <!-- ─── STATE 1: COUNTDOWN ─── -->
-    <section class="panel countdown-panel" id="countdown-panel" aria-label="Countdown to birthday">
-
-      <p class="status-label">⏳ &nbsp;Preparing the Vibe&hellip;</p>
-
-      <div class="countdown-grid" id="countdown-grid">
-        <div class="digit-block">
-          <span class="digit" id="cd-days">00</span>
-          <span class="digit-label">DAYS</span>
-        </div>
-        <div class="digit-sep" aria-hidden="true">:</div>
-        <div class="digit-block">
-          <span class="digit" id="cd-hours">00</span>
-          <span class="digit-label">HRS</span>
-        </div>
-        <div class="digit-sep" aria-hidden="true">:</div>
-        <div class="digit-block">
-          <span class="digit" id="cd-mins">00</span>
-          <span class="digit-label">MINS</span>
-        </div>
-        <div class="digit-sep" aria-hidden="true">:</div>
-        <div class="digit-block">
-          <span class="digit" id="cd-secs">00</span>
-          <span class="digit-label">SECS</span>
-        </div>
+  <main>
+    <section id="countdown-panel" class="countdown-panel panel">
+      <h2 class="cd-title">PREPARING THE VIBE...</h2>
+      <div class="countdown-grid">
+        <div class="cd-item"><span id="cd-days" class="digit">00</span><label>DAYS</label></div>
+        <div class="cd-item"><span id="cd-hours" class="digit">00</span><label>HRS</label></div>
+        <div class="cd-item"><span id="cd-mins" class="digit">00</span><label>MINS</label></div>
+        <div class="cd-item"><span id="cd-secs" class="digit">00</span><label>SECS</label></div>
       </div>
-
-      <p class="countdown-sub">Unlocks on April 11, 2026 &middot; 00:00 IST</p>
-
+      <p class="unlock-date">Unlocks on April 11, 2026 · 00:00 IST</p>
     </section>
 
-    <!-- ─── STATE 2: BIRTHDAY REVEAL ─── -->
-    <section class="birthday-panel" id="birthday-panel" aria-label="Birthday message" hidden>
+    <section id="birthday-panel" class="birthday-panel" hidden>
+      <div id="cake-container" style="font-size: 6rem; display: block; margin: 0 auto 1rem; width: fit-content;">🎂</div>
+      
+      <h1 class="neon-heading">HAPPY 19TH<br>BIRTHDAY, JEETESH!</h1>
 
-      <!-- Main Neon Heading -->
-      <h1 class="neon-heading">
-        Happy&nbsp;19th<br />Birthday,<br />Jeetesh!
-      </h1>
-
-      <!-- Decorative divider -->
-      <div class="divider" aria-hidden="true">
-        <span class="divider-dot"></span>
-        <span class="divider-line"></span>
-        <span class="divider-dot"></span>
-      </div>
-
-      <!-- ════════════════════════════════
-           EDIT ZONE 1 · Personal Message
-           Replace the text inside <p> below.
-           You can have multiple <p> tags.
-      ════════════════════════════════ -->
-      <div class="message-card panel" id="message-card">
+      <div class="message-card panel">
         <p class="message-text">
-          <!-- EDIT: Your message to Jeetesh goes here -->
           "We may not have photos together, nor do we meet every day, <br>
           but we share our memories, ideas and concepts, and most of all a Bond ❤️ <br>  
-          Happy Birthday, My Friend! , My Brother & Bestie 🎂  "
-        </p>
-
-        <!-- EDIT ZONE 2 · Optional second paragraph — add anything personal -->
-        <p class="message-extra">
-          <!-- Leave blank or add a second line here -->
+          Happy Birthday, Brother & Bestie! 🎂"
         </p>
       </div>
 
-      <!-- Launch Button -->
       <div class="btn-wrap">
-        <button class="launch-btn" id="launch-btn" aria-label="Launch birthday song">
+        <button class="launch-btn" id="launch-btn">
           <span class="btn-icon">🎵</span>
           <span class="btn-label" id="btn-label">Launch Birthday Vibe</span>
         </button>
         <p class="btn-hint" id="btn-hint">tap to play the vibe 🎧</p>
       </div>
-
     </section>
-
   </main>
 
-  <!-- ═══════════════════════════════════════════
-       YOUTUBE HIDDEN PLAYER ANCHOR
-       The IFrame API will inject the iframe here.
-       It is physically off-screen — audio only.
-  ═══════════════════════════════════════════ -->
-  <div id="yt-player" aria-hidden="true"></div>
+  <div id="meme-container" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 9999;">
+    <img src="https://media.tenor.com/S6-2_Zp_S6EAAAAC/oiiaoiia-cat.gif" width="180" alt="Oiia Cat">
+  </div>
 
+  <div id="yt-player"></div>
   <script src="script.js"></script>
 </body>
 </html>
