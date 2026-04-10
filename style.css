@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   JEETESH BIRTHDAY SITE · Optimized style.css
+   JEETESH BIRTHDAY SITE · RESTORED NEON THEME
 ═══════════════════════════════════════════════════════ */
 :root {
   --void: #050509;
@@ -23,68 +23,83 @@ body {
 }
 
 /* STAR BACKGROUND */
-.star-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-.star-sm { background: radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)); background-size: 100px 100px; z-index: 1; }
+.star-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.star-sm { background: radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)); background-size: 100px 100px; }
 
-/* THE MAIN STACK FIX */
+/* THE ALIGNMENT STACK FIX */
 main {
   width: 100%;
   max-width: 600px;
-  padding: 2rem;
+  padding: 1.5rem;
+  display: grid; /* Enables stacking */
+  place-items: center;
   position: relative;
   z-index: 10;
-  display: grid;
-  place-items: center; /* Centers everything perfectly */
 }
 
 .panel {
-  grid-area: 1 / 1; /* This stacks panels on top of each other so alignment never breaks */
+  grid-area: 1 / 1; /* Stacks panels in the same spot */
   width: 100%;
   background: rgba(10, 10, 20, 0.4);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 24px;
-  padding: 2.5rem;
+  border-radius: 28px;
+  padding: 3rem 2rem;
   text-align: center;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.panel[hidden] { display: none !important; }
+.panel[hidden] { 
+  display: none !important; 
+  opacity: 0;
+  transform: scale(0.95);
+}
 
-/* NEON VIBES */
+/* NEON TYPOGRAPHY RESTORED */
 .neon-heading {
-  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-size: clamp(2.2rem, 9vw, 3.8rem);
   font-weight: 900;
   text-transform: uppercase;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1;
+  margin-bottom: 2rem;
   background: linear-gradient(to bottom, var(--cyan), var(--pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+  filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.4));
 }
 
-.message-card { margin-top: 1.5rem; border-color: rgba(236, 72, 153, 0.3); }
+.message-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+}
+
+.message-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
 
 /* BUTTON */
 .launch-btn {
   background: linear-gradient(45deg, var(--purple), var(--pink));
   border: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   border-radius: 50px;
   color: white;
   font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
 }
-.launch-btn:hover { transform: scale(1.05); }
 
-/* MEME CONTAINER */
+/* MEME FIX */
 #meme-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999; /* Ensure it's above everything */
-  pointer-events: none;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
 }
