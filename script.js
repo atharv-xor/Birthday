@@ -22,27 +22,14 @@ window.onYouTubeIframeAPIReady = () => {
   });
 };
 
+/* Inside your startTheParty function */
 function startTheParty() {
   const cat = document.getElementById('meme-container');
   if (cat) cat.style.display = 'block';
 
-  // 1. PARTY FLICKER
-  gsap.to("body", {
-    backgroundColor: "#1a0b2e", 
-    duration: 0.1, 
-    repeat: 15, 
-    yoyo: true, 
-    onComplete: () => gsap.set("body", { clearProps: "all" }) 
-  });
-
-  // 2. CAT POP-IN
-  gsap.fromTo("#meme-container", 
-    { scale: 0, y: 50 }, 
-    { scale: 1, y: 0, duration: 1, ease: "back.out(2)" }
-  );
-
-  // 3. INFINITE VIBE
-  gsap.to("#meme-container", { y: -30, duration: 0.4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  // Flicker, Cat Pop, and Cake Bounce
+  gsap.to("body", { backgroundColor: "#1a0b2e", duration: 0.1, repeat: 15, yoyo: true });
+  gsap.fromTo("#meme-container", { scale: 0, y: 50 }, { scale: 1, y: 0, duration: 1, ease: "back.out(2)" });
   gsap.to("#cake-container", { scale: 1.3, duration: 0.5, repeat: -1, yoyo: true });
 }
 
