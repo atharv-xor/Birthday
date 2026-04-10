@@ -2,7 +2,6 @@ const TARGET_DATE  = new Date('2026-04-10T18:30:00Z');
 const YT_VIDEO_ID  = 'fydbhIZJwNs'; 
 const YT_START_SEC = 25; 
 
-/* DOM REFERENCES */
 const countdownPanel = document.getElementById('countdown-panel');
 const birthdayPanel  = document.getElementById('birthday-panel');
 const cdDays         = document.getElementById('cd-days');
@@ -128,4 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCountdown();
     window.countdownInterval = setInterval(updateCountdown, 1000);
   }
-});
+}); 
