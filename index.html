@@ -4,55 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy 19th Birthday, Jeetesh! 🎂</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="star-layer star-sm"></div>
-  <div class="star-layer star-md"></div>
-  <div class="star-layer star-lg"></div>
 
   <main>
-    <section id="countdown-panel" class="countdown-panel panel">
-      <h2 class="cd-title">PREPARING THE VIBE...</h2>
-      <div class="countdown-grid">
-        <div class="cd-item"><span id="cd-days" class="digit">00</span><label>DAYS</label></div>
-        <div class="cd-item"><span id="cd-hours" class="digit">00</span><label>HRS</label></div>
-        <div class="cd-item"><span id="cd-mins" class="digit">00</span><label>MINS</label></div>
-        <div class="cd-item"><span id="cd-secs" class="digit">00</span><label>SECS</label></div>
-      </div>
-      <p class="unlock-date">Unlocks on April 11, 2026 · 00:00 IST</p>
+    <section id="countdown-panel" class="panel">
+      <h2 style="letter-spacing: 2px; opacity: 0.8;">PREPARING THE VIBE...</h2>
+      <div style="font-size: 3rem; font-weight: 900; margin: 2rem 0;">00:00:00</div>
+      <p style="font-size: 0.8rem; opacity: 0.6;">Unlocks April 11, 2026</p>
     </section>
 
-    <section id="birthday-panel" class="birthday-panel" hidden>
-      <div id="cake-container" style="font-size: 6rem; margin-bottom: 1rem; display: inline-block;">🎂</div>
+    <section id="birthday-panel" class="panel" hidden>
+      <div id="cake-container" style="font-size: 6rem; display: block; margin-bottom: 1rem;">🎂</div>
       
       <h1 class="neon-heading">HAPPY 19TH<br>BIRTHDAY, JEETESH!</h1>
 
-      <div class="message-card panel">
-        <p class="message-text">
-          "We may not have photos together, nor do we meet every day, <br>
-          but we share our memories, ideas and concepts, and most of all a Bond ❤️ <br>  
+      <div class="message-card">
+        <p style="line-height: 1.6; opacity: 0.9;">
+          "We share our memories, ideas and concepts, and most of all a Bond ❤️<br>
           Happy Birthday, Brother & Bestie! 🎂"
         </p>
       </div>
 
-      <div class="btn-wrap">
-        <button class="launch-btn" id="launch-btn">
-          <span class="btn-icon">🎵</span>
-          <span class="btn-label" id="btn-label">Launch Birthday Vibe</span>
-        </button>
-        <p class="btn-hint" id="btn-hint">tap to play the vibe 🎧</p>
-      </div>
+      <button class="launch-btn" id="launch-btn">
+        <span class="btn-icon">🎵</span>
+        <span class="btn-label" id="btn-label">Launch Birthday Vibe</span>
+      </button>
     </section>
   </main>
 
-  <div id="meme-container" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-    <img src="https://media.tenor.com/S6-2_Zp_S6EAAAAC/oiiaoiia-cat.gif" width="160" alt="Oiia Cat">
+  <div id="meme-container" style="display: none;">
+    <img src="https://media.tenor.com/S6-2_Zp_S6EAAAAC/oiiaoiia-cat.gif" width="180">
   </div>
 
   <div id="yt-player"></div>
