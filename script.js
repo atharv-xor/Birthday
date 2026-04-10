@@ -89,22 +89,67 @@ function initYTPlayer() {
 }
 
 /* BUTTON ACTION */
+/* ══════════════════════════════════════════════════════
+   BUTTON & PARTY LOGIC
+══════════════════════════════════════════════════════ */
+
 launchBtn.addEventListener('click', () => {
   if (isPlaying) return;
   
-  // Safe-check: only play if functions exist
+  // Check if YouTube player is ready and has the required methods
   if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
     if (ytPlayer.unmute) ytPlayer.unmute();
+    ytPlayer.setVolume(100);
     ytPlayer.seekTo(YT_START_SEC, true);
     ytPlayer.playVideo();
+    
     isPlaying = true;
     setButtonPlaying();
+    startTheParty(); // 🚀 Trigger the GSAP chaos
   } else {
-    // If player failed, show a message instead of getting stuck
     btnLabel.textContent = "Audio Error (Use HTTPS)";
     setTimeout(setButtonIdle, 2000);
   }
 });
+
+function startTheParty() {
+  const cat = document.getElementById('meme-container');
+  if (cat) cat.style.display = 'block';
+
+  // 1. Flicker Effect: Flashes background to deep purple
+  gsap.to("body", {
+    backgroundColor: "#2e0249", 
+    duration: 0.1, 
+    repeat: 15, 
+    yoyo: true, 
+    ease: "none",
+    onComplete: () => gsap.set("body", { backgroundColor: "#050509" }) 
+  });
+
+  // 2. Oiia Cat Pop: Comes in with a bounce
+  gsap.fromTo("#meme-container", 
+    { scale: 0, rotation: -20 }, 
+    { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(2)" }
+  );
+
+  // 3. Floating Cat Loop
+  gsap.to("#meme-container", {
+    y: -30,
+    duration: 0.4,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+  // 4. Cake Bounce
+  gsap.to("#cake-container", {
+    scale: 1.4,
+    duration: 0.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut"
+  });
+}
 
 function setButtonPlaying() {
   launchBtn.disabled = true;
@@ -119,10 +164,14 @@ function setButtonIdle() {
   btnLabel.textContent = 'Launch Birthday Vibe';
 }
 
-/* INIT */
+/* ══════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if it's already birthday time
-  if (true) {
+  const distance = TARGET_DATE.getTime() - Date.now();
+
+  // Change to 'distance <= 0' tonight so the countdown works!
+  if (true) { 
     triggerReveal();
   } else {
     updateCountdown();
