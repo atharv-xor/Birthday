@@ -87,26 +87,26 @@ function initYTPlayer() {
     }
   });
 }
-
-/* BUTTON ACTION *//* ══════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    BUTTON & PARTY LOGIC
 ══════════════════════════════════════════════════════ */
 
 launchBtn.addEventListener('click', () => {
   if (isPlaying) return;
   
+  // Visual transition happens immediately
+  setButtonPlaying();
+  startTheParty(); 
+
+  // Audio Playback
   if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
     if (ytPlayer.unmute) ytPlayer.unmute();
     ytPlayer.setVolume(100);
     ytPlayer.seekTo(YT_START_SEC, true);
     ytPlayer.playVideo();
-    
     isPlaying = true;
-    setButtonPlaying();
-    startTheParty(); // 🚀 Launch GSAP Animations
   } else {
-    btnLabel.textContent = "Audio Error (Use HTTPS)";
-    setTimeout(setButtonIdle, 2000);
+    console.warn("Audio failed to load, but the party continues!");
   }
 });
 
@@ -114,35 +114,35 @@ function startTheParty() {
   const cat = document.getElementById('meme-container');
   if (cat) cat.style.display = 'block';
 
-  // 1. Flicker Effect: Flashes background between void and deep purple
+  // 1. FLICKER EFFECT: Background flashes to the beat
   gsap.to("body", {
-    backgroundColor: "#2e0249", 
+    backgroundColor: "#1a0b2e", 
     duration: 0.1, 
-    repeat: 15, 
+    repeat: 19, // One for each year
     yoyo: true, 
     ease: "none",
     onComplete: () => gsap.set("body", { clearProps: "backgroundColor" }) 
   });
 
-  // 2. Oiia Cat Pop: Bounces in from nothing
+  // 2. OIIA CAT POP: Bounces in from the corner
   gsap.fromTo("#meme-container", 
-    { scale: 0, rotation: -30 }, 
-    { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(2)" }
+    { scale: 0, rotation: 45, y: 100 }, 
+    { scale: 1, rotation: 0, y: 0, duration: 1, ease: "back.out(1.7)" }
   );
 
-  // 3. Constant Cat Vibration: Moves to the beat
+  // 3. OIIA CAT VIBE: Infinite loop of hopping
   gsap.to("#meme-container", {
-    y: -30,
-    duration: 0.35,
+    y: -40,
+    duration: 0.4,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
   });
 
-  // 4. Cake Animation: Bounces and grows
+  // 4. CAKE ANIMATION: Bouncing and Pulsing
   gsap.to("#cake-container", {
-    scale: 1.5,
-    y: -20,
+    scale: 1.6,
+    rotation: 10,
     duration: 0.5,
     repeat: -1,
     yoyo: true,
@@ -152,29 +152,21 @@ function startTheParty() {
 
 function setButtonPlaying() {
   launchBtn.disabled = true;
+  launchBtn.style.opacity = "0.7";
   btnIcon.textContent = '🎂';
   btnLabel.textContent = 'Vibing…';
-}
-
-function setButtonIdle() {
-  isPlaying = false;
-  launchBtn.disabled = false;
-  btnIcon.textContent = '🎵';
-  btnLabel.textContent = 'Launch Birthday Vibe';
+  if (btnHint) btnHint.classList.add('hidden');
 }
 
 /* ══════════════════════════════════════════════════════
    INIT
 ══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if it's already birthday time
-  const distance = TARGET_DATE.getTime() - Date.now();
-  
-  // Set to 'distance <= 0' for the real countdown!
+  // Always skip countdown for testing
   if (true) { 
-    triggerReveal();
-  } else {
-    updateCountdown();
-    window.countdownInterval = setInterval(updateCountdown, 1000);
+    countdownPanel.hidden = true;
+    birthdayPanel.removeAttribute('hidden');
+    birthdayPanel.classList.add('revealed');
+    loadYouTubeAPI();
   }
 });
