@@ -88,15 +88,13 @@ function initYTPlayer() {
   });
 }
 
-/* BUTTON ACTION */
-/* ══════════════════════════════════════════════════════
+/* BUTTON ACTION *//* ══════════════════════════════════════════════════════
    BUTTON & PARTY LOGIC
 ══════════════════════════════════════════════════════ */
 
 launchBtn.addEventListener('click', () => {
   if (isPlaying) return;
   
-  // Check if YouTube player is ready and has the required methods
   if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
     if (ytPlayer.unmute) ytPlayer.unmute();
     ytPlayer.setVolume(100);
@@ -105,7 +103,7 @@ launchBtn.addEventListener('click', () => {
     
     isPlaying = true;
     setButtonPlaying();
-    startTheParty(); // 🚀 Trigger the GSAP chaos
+    startTheParty(); // 🚀 Launch GSAP Animations
   } else {
     btnLabel.textContent = "Audio Error (Use HTTPS)";
     setTimeout(setButtonIdle, 2000);
@@ -116,34 +114,35 @@ function startTheParty() {
   const cat = document.getElementById('meme-container');
   if (cat) cat.style.display = 'block';
 
-  // 1. Flicker Effect: Flashes background to deep purple
+  // 1. Flicker Effect: Flashes background between void and deep purple
   gsap.to("body", {
     backgroundColor: "#2e0249", 
     duration: 0.1, 
     repeat: 15, 
     yoyo: true, 
     ease: "none",
-    onComplete: () => gsap.set("body", { backgroundColor: "#050509" }) 
+    onComplete: () => gsap.set("body", { clearProps: "backgroundColor" }) 
   });
 
-  // 2. Oiia Cat Pop: Comes in with a bounce
+  // 2. Oiia Cat Pop: Bounces in from nothing
   gsap.fromTo("#meme-container", 
-    { scale: 0, rotation: -20 }, 
+    { scale: 0, rotation: -30 }, 
     { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(2)" }
   );
 
-  // 3. Floating Cat Loop
+  // 3. Constant Cat Vibration: Moves to the beat
   gsap.to("#meme-container", {
     y: -30,
-    duration: 0.4,
+    duration: 0.35,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
   });
 
-  // 4. Cake Bounce
+  // 4. Cake Animation: Bounces and grows
   gsap.to("#cake-container", {
-    scale: 1.4,
+    scale: 1.5,
+    y: -20,
     duration: 0.5,
     repeat: -1,
     yoyo: true,
@@ -168,9 +167,10 @@ function setButtonIdle() {
    INIT
 ══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  // Check if it's already birthday time
   const distance = TARGET_DATE.getTime() - Date.now();
-
-  // Change to 'distance <= 0' tonight so the countdown works!
+  
+  // Set to 'distance <= 0' for the real countdown!
   if (true) { 
     triggerReveal();
   } else {
